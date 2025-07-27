@@ -10,6 +10,9 @@
   boot = {
     loader = {
       grub = {
+        enable = true;
+        device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_101118637";
+        efiSupport = false;
         enableCryptodisk = true;
         configurationLimit = 10;
         extraConfig = ''

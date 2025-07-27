@@ -14,7 +14,7 @@
   boot.extraModulePackages = [ ];
 
   # Enable LVM and LUKS support
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/CRYPTROOT";
+  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-partlabel/CRYPTROOT";
 
   # Filesystems will be configured by disko
   fileSystems."/" = lib.mkDefault { };
