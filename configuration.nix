@@ -11,7 +11,7 @@
     loader = {
       grub = {
         enable = true;
-        device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_101118637";
+        device = "/dev/sda";
         configurationLimit = 10;
         extraConfig = ''
           serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1
