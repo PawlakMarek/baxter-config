@@ -7,17 +7,17 @@
         content = {
           type = "gpt";
           partitions = {
-            ESP = {
-              type = "EF00";
+            MBR = {
+              type = "EF02";
+              size = "1M";
+            };
+            boot = {
+              type = "8300";
               size = "512M";
               content = {
                 type = "filesystem";
-                format = "vfat";
+                format = "ext4";
                 mountpoint = "/boot";
-                mountOptions = [
-                  "defaults"
-                  "umask=0077"
-                ];
               };
             };
             luks = {

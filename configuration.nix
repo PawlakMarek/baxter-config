@@ -11,9 +11,7 @@
     loader = {
       grub = {
         enable = true;
-        efiSupport = true;
-        efiInstallAsRemovable = true;
-        device = "nodev";
+        device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_101118637";
         configurationLimit = 10;
         extraConfig = ''
           serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1
