@@ -12,7 +12,7 @@
               size = "1M";
             };
             boot = {
-              type = "partition";
+              type = "8300";
               size = "512M";
               label = "boot";
               content = {
@@ -28,7 +28,7 @@
               };
             };
             luks = {
-              type = "partition";
+              type = "8300";
               size = "100%";
               label = "CRYPTROOT";
               content = {
@@ -57,6 +57,20 @@
       vg0 = {
         type = "lvm_vg";
         lvs = {
+          swap = {
+            size = "2G";
+            content = {
+              type = "swap";
+            };
+          };
+          emergency = {
+            size = "2G";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/emergency";
+            };
+          };
           root = {
             size = "100%FREE";
             content = {
@@ -71,20 +85,6 @@
                 "allocsize=16m"
                 "logbsize=256k"
               ];
-            };
-          };
-          swap = {
-            size = "2G";
-            content = {
-              type = "swap";
-            };
-          };
-          emergency = {
-            size = "2G";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/emergency";
             };
           };
         };
