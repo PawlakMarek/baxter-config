@@ -4,25 +4,24 @@
   system.stateVersion = "25.05";
 
   imports = [
-    ./disko-config.nix
+    ./hardware-configuration.nix
   ];
 
   boot = {
     loader = {
       grub = {
         enable = true;
-        version = 2;
         device = "nodev";
         efiSupport = false;
         enableCryptodisk = true;
         configurationLimit = 10;
-        timeout = 10;
         extraConfig = ''
           serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1
           terminal_input serial
           terminal_output serial
         '';
       };
+      timeout = 10;
     };
     kernelParams = [
       "console=ttyS0,19200n8"
