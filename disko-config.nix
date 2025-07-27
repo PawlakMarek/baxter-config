@@ -7,24 +7,13 @@
         content = {
           type = "gpt";
           partitions = {
-            MBR = {
-              type = "EF02";
-              size = "1M";
-            };
-            boot = {
-              type = "8300";
+            ESP = {
+              type = "EF00";
               size = "512M";
-              label = "boot";
               content = {
                 type = "filesystem";
-                format = "ext4";
+                format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [
-                  "defaults"
-                  "noatime"
-                  "nodiratime"
-                  "errors=remount-ro"
-                ];
               };
             };
             luks = {
