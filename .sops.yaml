@@ -1,0 +1,9 @@
+# .sops.yaml - SOPS configuration for age encryption
+keys:
+  - &admin_h4wkeye age1dr7wep27gem82xw0rehwefrw4ksmjnacaktkwd89ly0tff5d0pgqke6m8r
+
+creation_rules:
+  - path_regex: secrets\.yaml$
+    key_groups:
+    - age:
+      - *admin_h4wkeye
