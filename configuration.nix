@@ -74,9 +74,14 @@
   users.users.h4wkeye = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    hashedPasswordFile = config.sops.secrets."h4wkeye-password-hash".path;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMGeqoInM+/Ia0qeAiFOLywjCo6bH5nJGYYMIPShxKT9"
     ];
+  };
+
+  users.users.root = {
+    hashedPasswordFile = config.sops.secrets."root-password-hash".path;
   };
 
   services.openssh = {
@@ -98,4 +103,26 @@
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    defaultSopsFormat = "yaml";
+    age = {
+      keyFile = "/var/lib/sops-nix/key.txt";
+      generateKey = true;
+    };
+    secrets = {
+      "h4wkeye-password-hash" = {
+        neededForUsers = true;
+      };
+      "root-password-hash" = {
+        neededForUsers = true;
+      };
+      "luks-password" = {};
+      "initrd-ssh-authorized-key" = {};
+      "storage-box-user" = {};
+      "storage-box-password" = {};
+      "storage-box-host" = {};
+    };
+  };
 }
