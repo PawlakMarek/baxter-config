@@ -23,7 +23,10 @@
     };
     kernelParams = [
       "console=ttyS0,19200n8"
+      "boot.shell_on_fail"
     ];
+    initrd.availableKernelModules = [ "virtio_pci" "virtio_scsi" "ahci" "sd_mod" "dm_crypt" ];
+    initrd.kernelModules = [ "dm-snapshot" "dm-crypt" ];
   };
 
   networking = {
