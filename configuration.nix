@@ -9,13 +9,17 @@
 
   boot = {
     loader = {
-      systemd-boot = {
+      grub = {
         enable = true;
+        efiSupport = true;
+        efiInstallAsRemovable = true;
+        device = "nodev";
         configurationLimit = 10;
-        consoleMode = "0";
-      };
-      efi = {
-        canTouchEfiVariables = true;
+        extraConfig = ''
+          serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1
+          terminal_input serial
+          terminal_output serial
+        '';
       };
       timeout = 10;
     };
