@@ -23,6 +23,8 @@
     };
     kernelParams = [
       "console=ttyS0,19200n8"
+      "console=tty0"
+      "earlyprintk=serial,ttyS0,19200"
       "boot.shell_on_fail"
     ];
     initrd.availableKernelModules = [ "virtio_pci" "virtio_scsi" "ahci" "sd_mod" "dm_crypt" ];
